@@ -14,6 +14,15 @@ from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .models import Property
 
+from django.conf.urls import url
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Real estate API')
+
+urlpatterns = [
+    url(r'^$', schema_view)
+]
+
 # Register API
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
